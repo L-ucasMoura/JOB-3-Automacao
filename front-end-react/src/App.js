@@ -16,8 +16,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Changes, changed!
-          Teste 4
+          Estado Inicial
           Minha variável de estado vale: {data}
         </p>
         <a
