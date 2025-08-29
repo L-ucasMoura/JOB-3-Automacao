@@ -1,12 +1,22 @@
 /*App.jsx é a nossa Main */
 
-//Import component through MODULES
+import Button from "./Button";
 
-import Button from "./Button/Button.jsx";
+//Use components Inline
 
 function App() {
+    const styles = {
+        font: "Arial",
+        color: "white",
+        backgroundColor: "green",
+        border: "none",
+        borderRadius: "5px",
+        padding: "10px 20px",
+        cursor: "pointer",
+    }
+    
     return (
-            <Button />
+        <button style={styles}>Click Me!</button>
     );
 }
 
