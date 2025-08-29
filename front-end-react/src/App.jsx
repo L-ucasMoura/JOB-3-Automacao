@@ -1,16 +1,13 @@
 /*App.jsx é a nossa Main */
 
-/*Tudo isso são componentes criados e importados */
-import Card from './Card.jsx'
+//Import component through MODULES
 
-/*Uma function nada mais é que um componente. App() é nosso componente Main*/
+import Button from "./Button/Button.jsx";
+
 function App() {
     return (
-        /*Fragmentos abraçam os componentes importados em um conjunto maior*/
-        <>
-            <Card />
-        </>
-     );
+            <Button />
+    );
 }
 
 export default App;
