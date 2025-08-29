@@ -1,22 +1,14 @@
 /*App.jsx é a nossa Main */
 
-import Button from "./Button";
+import Student from "./Student.jsx";
 
 //Use components Inline
-
-function App() {
-    const styles = {
-        font: "Arial",
-        color: "white",
-        backgroundColor: "green",
-        border: "none",
-        borderRadius: "5px",
-        padding: "10px 20px",
-        cursor: "pointer",
-    }
-    
+function App(){
     return (
-        <button style={styles}>Click Me!</button>
+        <>
+        <Student name="Spongebob" age={30} isStudent={true}/>
+        <Student name="Jose" age={40} isStudent={false}/>
+        </>
     );
 }
 
