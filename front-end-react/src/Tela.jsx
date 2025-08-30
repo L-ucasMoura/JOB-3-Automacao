@@ -9,7 +9,7 @@ function Tela(){
             <NavBar />
             
             <div className="title">
-                Aqui fica o Título
+                SELECIONAR ARMAZÉM
             </div>
 
             <div className="content">
