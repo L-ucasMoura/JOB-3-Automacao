@@ -1,5 +1,6 @@
-import MainBtn from "./MainBtn";
 import NavBar from "./NavBar";
+import MainBtn from "./MainBtn";
+import ActionBtn from "./Telas/ActionBtn";
 
 function Tela(){
     return(
@@ -12,18 +13,15 @@ function Tela(){
             </div>
 
             <div className="content">
-                <MainBtn /> 
-                <MainBtn />
+                <MainBtn text="ARMAZÉM" info="A"/> 
+                <MainBtn text="ARMAZÉM" info="B"/>
             </div>
 
             <div className="botton">
-                <button>Botão1</button>
-                <button>Botão2</button>
+                <ActionBtn caption="VOLTAR"/>
+                <ActionBtn caption="AVANÇAR"/>
             </div>
 
-
-
-            Layout
         </div>
     );
 }
