@@ -23,6 +23,7 @@ body{
 }
 .navBar{
     display: flex;
+    justify-content: space-between;
     min-height: 70px;
     width: 100%;
     background-color: var(--border);
@@ -38,6 +39,7 @@ body{
 }
 .content{
     width: 100%;
+    height:auto;
     border: 3px solid white;
     display: flex;
     flex-wrap: wrap;
@@ -65,10 +67,10 @@ body{
 }
 .botton{
     border: 3px solid white;
+    margin-top: auto;
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 20px;
     padding: 10px 20px;
     color: white;
     font-size: 18px;

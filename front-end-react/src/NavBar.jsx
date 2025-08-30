@@ -1,11 +1,22 @@
 
 
 function NavBar(){
-    return <div className="navBar">
-        <button>botao1</button>
-        <button>botao2</button>
-        <button>botao3</button>
-        <button>botao4</button>
-    </div>;
+    return( 
+        <nav className="navBar">
+            <div className="nav-left">
+                <button>Esq1</button>
+            </div>
+
+            <div className="nav-center">
+                <button>Meio1</button>
+                <button>Meio2</button>
+                <button>Meio3</button>
+            </div>
+
+            <div className="nav-right">
+                <button>Dir1</button>
+            </div>
+        </nav>
+    );
 }
 export default NavBar;
