@@ -1,20 +1,20 @@
-
+import NavBtn from "./NavBtn";
 
 function NavBar(){
     return( 
         <nav className="navBar">
             <div className="nav-left">
-                <button>Esq1</button>
+                <NavBtn caption="Esq1"/>
             </div>
 
             <div className="nav-center">
-                <button>Meio1</button>
-                <button>Meio2</button>
-                <button>Meio3</button>
+                <NavBtn caption="HOME"/>
+                <NavBtn caption="PROCESSO"/>
+                <NavBtn caption="RELATÓRIO"/>
             </div>
 
             <div className="nav-right">
-                <button>Dir1</button>
+                <NavBtn caption="Esq1"/>
             </div>
         </nav>
     );

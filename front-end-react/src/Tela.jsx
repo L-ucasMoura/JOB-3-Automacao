@@ -13,8 +13,8 @@ function Tela(){
             </div>
 
             <div className="content">
-                <MainBtn text="ARMAZÉM" info="A"/> 
-                <MainBtn text="ARMAZÉM" info="B"/>
+                <MainBtn text="ARMAZÉM" info="A" imgSrc="/wire-white.png"/> 
+                <MainBtn text="ARMAZÉM" info="B" imgSrc="/boxes.png"/>
             </div>
 
             <div className="botton">
