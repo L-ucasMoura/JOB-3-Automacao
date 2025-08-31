@@ -2,27 +2,27 @@ import NavBar from "./NavBar";
 import MainBtn from "./MainBtn";
 import ActionBtn from "./Telas/ActionBtn";
 
-function Tela({irPara}){
+function TelaFibra({irPara}){
     return(
         <div className="layout">
 
             <NavBar irPara={irPara}/>
             
             <div className="title">
-                SELECIONAR ARMAZÉM
+                SELECIONAR TAMANHO DA FIBRA
             </div>
 
             <div className="content">
-                <MainBtn text="ARMAZÉM" info="A" imgSrc="/boxes.png"/> 
-                <MainBtn text="ARMAZÉM" info="B" imgSrc="/boxes.png"/>
+                <MainBtn text="FIBRA" info="20 CM" imgSrc="/wire-white.png"/> 
+                <MainBtn text="FIBRA" info="40 CM" imgSrc="/wire-white.png"/>
             </div>
 
             <div className="botton">
-                <ActionBtn caption="VOLTAR" />
-                <ActionBtn caption="AVANÇAR" irPara={irPara} destino="TelaFibra"/>
+                <ActionBtn caption="VOLTAR"/>
+                <ActionBtn caption="AVANÇAR"/>
             </div>
 
         </div>
     );
 }
-export default Tela;
+export default TelaFibra;
