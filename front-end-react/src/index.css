@@ -182,7 +182,7 @@ body{
     color: var(--bg);
     font-size: auto;
     cursor: pointer;
-    padding: 2px 4px;
+    padding: 5px 20px;
 }
 .card{
     display: flex;
@@ -307,45 +307,30 @@ body{
     justify-content: flex-start;
     gap: 18px;
   }
-  .logo{ order: -1; }        /* mostra a logo acima do card (opcional) */
+  .logo{ order: -1; }        /* mostra a logo acima do card*/
   .login-card{ width: 100%; max-width: 520px; margin: 0 auto; }
 }
 input::placeholder{ color: rgba(7,39,53,.45); }
 :focus-visible{ outline: 3px solid rgba(99,255,244,.16); outline-offset:2px; }
 /*---------------------------------------------------------------*/
 
-/*-------------------------- INPUT -------------------------------*/
-.input-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px; /* tamanho máximo (bom para desktop) */
-  margin: 10px auto; /* centraliza na tela */
+.confirm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Droid Sans, sans-serif;
+    font-size: 30px;
+    min-width: 100%;
+    text-align: left;
+    line-height: 0.5;
 }
-
-.input-label {
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: white; /* pode ajustar conforme o tema */
-}
-
-.input-field {
-  padding: 10px 12px;
-  font-size: 16px;
-  border: 2px solid #1e3a5f;
-  border-radius: 6px;
-  outline: none;
-  width: 100%; /* ocupa toda a largura disponível */
-  box-sizing: border-box;
-}
-
-.input-field:focus {
-  border-color: #00bfff;
-  box-shadow: 0 0 5px #00bfff55;
-}
-
-.input-error {
-  margin-top: 4px;
-  font-size: 13px;
-  color: #ff5555;
+.confirm-content span{
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: .06em;
+    text-align: right;
+    margin-bottom: 30px;
+    margin-left: 20px;
 }
