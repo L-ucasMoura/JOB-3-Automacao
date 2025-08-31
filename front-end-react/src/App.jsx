@@ -3,7 +3,7 @@ import TelaLogin from "./TelaLogin";
 
 function App() {
   return (
-    <TelaLogin />
+    <Tela />
   );
 }
 export default App;

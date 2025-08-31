@@ -54,6 +54,28 @@ body{
     height: auto;
     display: block;
 }
+.nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+.date-time{
+    display: flex;
+    max-height: 70px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: auto;
+}
+.date-time h3{
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
 .nav-btn{
     width: 150px;
     min-height: 100%;
