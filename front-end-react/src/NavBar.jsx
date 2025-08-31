@@ -24,9 +24,9 @@ function NavBar(){
             </div>
 
             <div className="nav-center">
-                <NavBtn caption="HOME"/>
-                <NavBtn caption="PROCESSO"/>
-                <NavBtn caption="RELATÓRIO"/>
+                <NavBtn caption="HOME" iconScr="/home-white.png"/>
+                <NavBtn caption="PROCESSO" iconScr="/automation-white.png"/>
+                <NavBtn caption="RELATÓRIO" iconScr="/barchart-white.png"/>
             </div>
 
             <div className="nav-right">
@@ -34,7 +34,7 @@ function NavBar(){
                     <h3>{formattedDate}</h3>
                     <h3>{formattedTime}</h3>
                 </div>
-                <NavBtn caption="SAIR"/>
+                <NavBtn caption="SAIR" iconScr="/exit.png"/>
             </div>
         </nav>
     );
