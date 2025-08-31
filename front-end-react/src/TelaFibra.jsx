@@ -18,7 +18,7 @@ function TelaFibra({irPara}){
             </div>
 
             <div className="botton">
-                <ActionBtn caption="VOLTAR"/>
+                <ActionBtn caption="VOLTAR" irPara={irPara} destino="Tela"/>
                 <ActionBtn caption="AVANÇAR"/>
             </div>
 

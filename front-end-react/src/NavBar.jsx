@@ -25,7 +25,7 @@ function NavBar({irPara}){
 
             <div className="nav-center">
                 <NavBtn caption="HOME" iconScr="/home-white.png"/>
-                <NavBtn caption="PROCESSO" iconScr="/automation-white.png"/>
+                <NavBtn caption="PROCESSO" iconScr="/automation-white.png" irPara={irPara} destino="Tela"/>
                 <NavBtn caption="RELATÓRIO" iconScr="/barchart-white.png"/>
             </div>
 
