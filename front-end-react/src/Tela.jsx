@@ -43,6 +43,7 @@ function Tela({irPara}){
                     />
 
                 {select && (<ActionBtn 
+                    style={{ "--btn-bg": "#10b981" }}
                     caption="AVANÇAR" 
                     irPara={irPara} 
                     destino="TelaFibra"

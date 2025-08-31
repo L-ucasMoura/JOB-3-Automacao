@@ -8,7 +8,7 @@ export default function Inicio({irPara}) {
             <NavBar irPara={irPara}/>
             
             <div className="title">
-                Bem Vindo 
+                BEM VINDO 
             </div>
 
             <div className="content">

@@ -4,6 +4,7 @@ import Tela from "./Tela";
 import TelaLogin from "./TelaLogin";
 import TelaFibra from "./TelaFibra";
 import Inicio from "./Inicio";
+import TelaQtd from "./TelaQtd";
 
 function App() {
     const [telaAtual, setTela] = useState("TelaLogin");
@@ -14,7 +15,7 @@ function App() {
         {telaAtual === "Inicio" && <Inicio irPara={setTela} />}
         {telaAtual === "Tela" && <Tela irPara={setTela} />}
         {telaAtual === "TelaFibra" && <TelaFibra irPara={setTela} />}
-       
+        {telaAtual === "TelaQtd" && <TelaQtd irPara={setTela} />}
         </>
     );
     

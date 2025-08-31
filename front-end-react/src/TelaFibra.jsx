@@ -35,7 +35,11 @@ function TelaFibra({irPara}){
 
             <div className="botton">
                 <ActionBtn caption="VOLTAR" irPara={irPara} destino="Tela"/>
-                {select && (<ActionBtn caption="AVANÇAR"/>)}
+                {select && (<ActionBtn 
+                    caption="AVANÇAR"
+                    irPara={irPara}
+                    destino="TelaQtd"
+                    />)}
             </div>
 
         </div>

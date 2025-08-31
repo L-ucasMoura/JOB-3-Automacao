@@ -39,6 +39,8 @@ function NavBar({irPara}){
                 <NavBtn 
                     caption="RELATÓRIO" 
                     iconScr="/barchart-white.png"
+                    irPara={irPara} 
+                    destino="Tela"
                     />
             </div>
 

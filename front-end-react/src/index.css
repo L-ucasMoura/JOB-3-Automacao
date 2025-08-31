@@ -178,7 +178,7 @@ body{
     min-height: 100%;
     border: none;
     border-radius: 9px;
-    background-color: white;
+    background-color: var(--btn-bg, white);
     color: var(--bg);
     font-size: auto;
     cursor: pointer;
@@ -313,3 +313,39 @@ body{
 input::placeholder{ color: rgba(7,39,53,.45); }
 :focus-visible{ outline: 3px solid rgba(99,255,244,.16); outline-offset:2px; }
 /*---------------------------------------------------------------*/
+
+/*-------------------------- INPUT -------------------------------*/
+.input-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px; /* tamanho máximo (bom para desktop) */
+  margin: 10px auto; /* centraliza na tela */
+}
+
+.input-label {
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: white; /* pode ajustar conforme o tema */
+}
+
+.input-field {
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 2px solid #1e3a5f;
+  border-radius: 6px;
+  outline: none;
+  width: 100%; /* ocupa toda a largura disponível */
+  box-sizing: border-box;
+}
+
+.input-field:focus {
+  border-color: #00bfff;
+  box-shadow: 0 0 5px #00bfff55;
+}
+
+.input-error {
+  margin-top: 4px;
+  font-size: 13px;
+  color: #ff5555;
+}
