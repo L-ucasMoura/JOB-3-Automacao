@@ -8,7 +8,7 @@ export default function InputNumber({ label, value, onChange, placeholder }) {
     const val = e.target.value;
 
     // Permite apenas números positivos
-    if (val === "" || /^[0-9]+$/.test(val)) {
+    if (val === "" || (/^[0-9]+$/.test(val) && parseInt(val) <= 500)) {
       setError("");
       onChange(val);
     } else {
