@@ -1,8 +1,12 @@
+import { useState } from "react";
 import NavBar from "./NavBar";
 import MainBtn from "./MainBtn";
 import ActionBtn from "./Telas/ActionBtn";
 
 function Tela({irPara}){
+
+    const[select, setSelect] = useState(null);
+
     return(
         <div className="layout">
 
@@ -13,13 +17,34 @@ function Tela({irPara}){
             </div>
 
             <div className="content">
-                <MainBtn text="ARMAZÉM" info="A" imgSrc="/boxes.png"/> 
-                <MainBtn text="ARMAZÉM" info="B" imgSrc="/boxes.png"/>
+                <MainBtn 
+                    text="ARMAZÉM" 
+                    info="A" 
+                    imgSrc="/boxes.png"
+                    imgSrcAtivo="/boxes-blue.png"
+                    ativo={select === "A"} 
+                    onClick={() => setSelect("A")}
+                    /> 
+                <MainBtn 
+                    text="ARMAZÉM" 
+                    info="B" 
+                    imgSrc="/boxes.png"
+                    imgSrcAtivo="/boxes-blue.png"
+                    ativo={select === "B"}
+                    onClick={() => setSelect("B")}
+                    />
             </div>
 
             <div className="botton">
-                <ActionBtn caption="VOLTAR" />
-                <ActionBtn caption="AVANÇAR" irPara={irPara} destino="TelaFibra"/>
+                <ActionBtn 
+                    caption="VOLTAR"
+                    />
+
+                {select && (<ActionBtn 
+                    caption="AVANÇAR" 
+                    irPara={irPara} 
+                    destino="TelaFibra"
+                    />)}
             </div>
 
         </div>

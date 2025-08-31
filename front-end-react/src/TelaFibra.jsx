@@ -1,8 +1,10 @@
 import NavBar from "./NavBar";
 import MainBtn from "./MainBtn";
 import ActionBtn from "./Telas/ActionBtn";
+import { useState } from "react";
 
 function TelaFibra({irPara}){
+    const[select, setSelect] = useState(null);
     return(
         <div className="layout">
 
@@ -13,13 +15,27 @@ function TelaFibra({irPara}){
             </div>
 
             <div className="content">
-                <MainBtn text="FIBRA" info="20 CM" imgSrc="/wire-white.png"/> 
-                <MainBtn text="FIBRA" info="40 CM" imgSrc="/wire-white.png"/>
+                <MainBtn 
+                    text="FIBRA" 
+                    info="20 CM" 
+                    imgSrc="/wire-white.png"
+                    imgSrcAtivo="/wire-blue.png"
+                    ativo={select === "20"}
+                    onClick={() => setSelect("20")}
+                    /> 
+                <MainBtn 
+                    text="FIBRA" 
+                    info="40 CM" 
+                    imgSrc="/wire-white.png"
+                    imgSrcAtivo="/wire-blue.png"
+                    ativo={select === "40"}
+                    onClick={() => setSelect("40")}
+                    />
             </div>
 
             <div className="botton">
                 <ActionBtn caption="VOLTAR" irPara={irPara} destino="Tela"/>
-                <ActionBtn caption="AVANÇAR"/>
+                {select && (<ActionBtn caption="AVANÇAR"/>)}
             </div>
 
         </div>

@@ -141,6 +141,12 @@ body{
     cursor: pointer;
     padding: 10px;
 }
+.main-btn.ativo {
+  background-color: white;
+}
+.main-btn.ativo h3{
+    color: var(--btn);
+}
 .btn-img{
     margin-top: 5px;
     max-height: 50%;
