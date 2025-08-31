@@ -5,5 +5,4 @@ function App() {
     <Tela />
   );
 }
-
 export default App;

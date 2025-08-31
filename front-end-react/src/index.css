@@ -1,4 +1,6 @@
 *{box-sizing: border-box;}
+@import url('https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&display=swap');
+
 body{
     margin: 0;
     padding: 0;
@@ -30,6 +32,28 @@ body{
     background-color: var(--border);
     overflow-x: auto;
 }
+.nav-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+.nav-left .logo-text{
+    font: "Fauna One", sans-serif;
+    font-weight: normal;
+    font-size: 22px;
+    color: white;
+}
+.nav-left .logo-text span{
+    color: var(--cyan);
+}
+
+.nav-left .logo-img img{
+    max-height: 60px;
+    height: auto;
+    display: block;
+}
 .nav-btn{
     width: 150px;
     min-height: 100%;
@@ -46,7 +70,10 @@ body{
     font-weight: bold;
 }
 .title{
-    font: Verdana, sans-serif;
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+    letter-spacing: -1px;
+    word-spacing: 10px;
     margin: 50px 0;
     font-size: 30px;
     padding: 10px 20px;
