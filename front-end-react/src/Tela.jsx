@@ -38,6 +38,8 @@ function Tela({irPara}){
             <div className="botton">
                 <ActionBtn 
                     caption="VOLTAR"
+                    destino="Inicio"
+                    irPara={irPara}
                     />
 
                 {select && (<ActionBtn 

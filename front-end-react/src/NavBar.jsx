@@ -24,9 +24,22 @@ function NavBar({irPara}){
             </div>
 
             <div className="nav-center">
-                <NavBtn caption="HOME" iconScr="/home-white.png"/>
-                <NavBtn caption="PROCESSO" iconScr="/automation-white.png" irPara={irPara} destino="Tela"/>
-                <NavBtn caption="RELATÓRIO" iconScr="/barchart-white.png"/>
+                <NavBtn 
+                    caption="HOME" 
+                    iconScr="/home-white.png"
+                    irPara={irPara}
+                    destino="Inicio"
+                    />
+                <NavBtn 
+                    caption="PROCESSO" 
+                    iconScr="/automation-white.png" 
+                    irPara={irPara} 
+                    destino="Tela"
+                    />
+                <NavBtn 
+                    caption="RELATÓRIO" 
+                    iconScr="/barchart-white.png"
+                    />
             </div>
 
             <div className="nav-right">

@@ -14,7 +14,7 @@ function TelaLogin({irPara}){
                     <input id="pass" type="password" placeholder="Senha"></input>
                 </div>
 
-                <button type="button" className="btn" onClick={() => irPara("Tela")}>ENTRAR</button>
+                <button type="button" className="btn" onClick={() => irPara("Inicio")}>ENTRAR</button>
             </div>
             
     
