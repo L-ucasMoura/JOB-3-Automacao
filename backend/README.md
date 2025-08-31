@@ -35,7 +35,7 @@ Cadastra um novo usuário no sistema.
 	"user": {
 		"id": 7,
 		"username": "operador08",
-		"name": "Yan Lima",
+		"name": " Andson Santos",
 		"role": "OPERADOR",
 		"createdAt": "2025-08-29T00:37:04.941Z"
 	}
