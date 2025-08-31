@@ -2,11 +2,11 @@ import NavBar from "./NavBar";
 import MainBtn from "./MainBtn";
 import ActionBtn from "./Telas/ActionBtn";
 
-function Tela(){
+function Tela({irPara}){
     return(
         <div className="layout">
 
-            <NavBar />
+            <NavBar irPara={irPara}/>
             
             <div className="title">
                 SELECIONAR ARMAZÉM

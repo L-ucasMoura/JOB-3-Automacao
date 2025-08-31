@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import NavBtn from "./NavBtn";
 
-function NavBar(){
+function NavBar({irPara}){
     const [dateTime, setDateTime] = useState(new Date());
 
     // Atualiza o estado a cada segundo
@@ -34,7 +34,7 @@ function NavBar(){
                     <h3>{formattedDate}</h3>
                     <h3>{formattedTime}</h3>
                 </div>
-                <NavBtn caption="SAIR" iconScr="/exit.png"/>
+                <NavBtn caption="SAIR" iconScr="/exit.png" destino="TelaLogin" irPara={irPara}/>
             </div>
         </nav>
     );

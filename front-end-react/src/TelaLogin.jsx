@@ -1,4 +1,4 @@
-function TelaLogin(){
+function TelaLogin({irPara}){
     return(
         <div className="layout-login">
         <div className="tela-login">
@@ -14,7 +14,7 @@ function TelaLogin(){
                     <input id="pass" type="password" placeholder="Senha"></input>
                 </div>
 
-                <button type="button" className="btn">ENTRAR</button>
+                <button type="button" className="btn" onClick={irPara}>ENTRAR</button>
             </div>
             
     
