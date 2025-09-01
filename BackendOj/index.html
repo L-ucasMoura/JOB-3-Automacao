@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Bobinas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+    <div id="app" class="bg-white rounded-xl shadow-lg p-8 w-full max-w-2xl">
+        <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Sistema de Bobinas</h1>
+
+        <!-- Login Section -->
+        <div id="login-section" class="flex flex-col items-center gap-4">
+            <h2 class="text-2xl font-semibold text-gray-700">Login</h2>
+            <form id="login-form" class="w-full space-y-4">
+                <input type="email" id="email" placeholder="Email" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="password" placeholder="Senha" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700 transition-colors">Entrar</button>
+            </form>
+            <button id="test-connection-btn" class="w-full bg-gray-500 text-white p-3 rounded-lg font-bold hover:bg-gray-600 transition-colors">Testar Conexão</button>
+            <p id="login-message" class="text-sm text-red-500"></p>
+            <p id="connection-status-message" class="text-sm text-center mt-2"></p>
+        </div>
+
+        <!-- Main Dashboard Section -->
+        <div id="main-dashboard" class="hidden">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Olá, <span id="username" class="font-bold"></span>!</h2>
+            <button id="logout-btn" class="absolute top-4 right-4 bg-red-500 text-white px-4 py-2 rounded-lg font-bold hover:bg-red-600 transition-colors">Sair</button>
+
+            <!-- Seção do Operário -->
+            <div id="operario-section" class="hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Iniciar Novo Processo</h3>
+                <form id="processo-form" class="space-y-4">
+                    <input type="text" id="tipoFibra" placeholder="Tipo de Fibra" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="text" id="armazem" placeholder="Armazém" required class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="w-full bg-green-600 text-white p-3 rounded-lg font-bold hover:bg-green-700 transition-colors">Iniciar Processo</button>
+                </form>
+                <p id="processo-message" class="text-sm text-center mt-2"></p>
+            </div>
+
+            <!-- Seção do Supervisor -->
+            <div id="supervisor-section" class="hidden">
+                <h3 class="text-xl font-semibold text-gray-700 mt-6 mb-4">Relatórios</h3>
+                <div class="overflow-x-auto rounded-lg shadow-md">
+                    <table class="min-w-full bg-white">
+                        <thead class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                            <tr>
+                                <th class="py-3 px-6 text-left">ID</th>
+                                <th class="py-3 px-6 text-left">Fibra</th>
+                                <th class="py-3 px-6 text-left">Armazém</th>
+                                <th class="py-3 px-6 text-left">Status</th>
+                                <th class="py-3 px-6 text-left">Início</th>
+                                <th class="py-3 px-6 text-left">Fim</th>
+                                <th class="py-3 px-6 text-left">Usuário</th>
+                            </tr>
+                        </thead>
+                        <tbody id="relatorios-table-body" class="text-gray-600 text-sm font-light">
+                            <!-- Data will be injected here -->
+                        </tbody>
+                    </table>
+                </div>
+                <p id="relatorios-message" class="text-sm text-red-500 mt-2 text-center"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000'; // Altere para a URL de produção
+
+        // Referências aos elementos do DOM
+        const loginSection = document.getElementById('login-section');
+        const mainDashboard = document.getElementById('main-dashboard');
+        const loginForm = document.getElementById('login-form');
+        const processoForm = document.getElementById('processo-form');
+        const logoutBtn = document.getElementById('logout-btn');
+        const operarioSection = document.getElementById('operario-section');
+        const supervisorSection = document.getElementById('supervisor-section');
+        const relatoriosTableBody = document.getElementById('relatorios-table-body');
+        const loginMessage = document.getElementById('login-message');
+        const processoMessage = document.getElementById('processo-message');
+        const relatoriosMessage = document.getElementById('relatorios-message');
+        const usernameSpan = document.getElementById('username');
+        const testConnectionBtn = document.getElementById('test-connection-btn');
+        const connectionStatusMessage = document.getElementById('connection-status-message');
+
+        const auth = {
+            token: null,
+            role: null
+        };
+
+        // Função para mostrar a seção correta da interface
+        function showDashboard() {
+            const token = localStorage.getItem('token');
+            const role = localStorage.getItem('role');
+            const username = localStorage.getItem('username');
+
+            if (token && role && username) {
+                auth.token = token;
+                auth.role = role;
+                usernameSpan.textContent = username;
+                loginSection.classList.add('hidden');
+                mainDashboard.classList.remove('hidden');
+
+                if (role === 'OPERARIO') {
+                    operarioSection.classList.remove('hidden');
+                    supervisorSection.classList.add('hidden');
+                } else if (role === 'SUPERVISOR') {
+                    operarioSection.classList.add('hidden');
+                    supervisorSection.classList.remove('hidden');
+                    fetchRelatorios();
+                }
+            } else {
+                loginSection.classList.remove('hidden');
+                mainDashboard.classList.add('hidden');
+            }
+        }
+
+        // Função para fazer logout
+        logoutBtn.addEventListener('click', () => {
+            localStorage.clear();
+            auth.token = null;
+            auth.role = null;
+            showDashboard();
+        });
+
+        // Login
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_URL}/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('role', data.role);
+                    localStorage.setItem('username', email); // Usamos o email como nome de usuário
+                    loginMessage.textContent = '';
+                    showDashboard();
+                } else {
+                    loginMessage.textContent = data.message || 'Erro no login.';
+                }
+            } catch (error) {
+                loginMessage.textContent = 'Erro de conexão com o servidor.';
+                console.error('Erro:', error);
+            }
+        });
+
+        // Iniciar Processo
+        processoForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const tipoFibra = document.getElementById('tipoFibra').value;
+            const armazem = document.getElementById('armazem').value;
+
+            try {
+                const response = await fetch(`${API_URL}/processo/iniciar`, {
+                    method: 'POST',
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${auth.token}`
+                    },
+                    body: JSON.stringify({ tipoFibra, armazem })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    processoMessage.textContent = `Processo ${data.id} iniciado com sucesso!`;
+                    processoMessage.classList.add('text-green-500');
+                    processoMessage.classList.remove('text-red-500');
+                } else {
+                    processoMessage.textContent = data.error || 'Erro ao iniciar o processo.';
+                    processoMessage.classList.add('text-red-500');
+                    processoMessage.classList.remove('text-green-500');
+                }
+            } catch (error) {
+                processoMessage.textContent = 'Erro de conexão com o servidor.';
+                processoMessage.classList.add('text-red-500');
+                processoMessage.classList.remove('text-green-500');
+                console.error('Erro:', error);
+            }
+        });
+
+        // Buscar Relatórios
+        async function fetchRelatorios() {
+            try {
+                const response = await fetch(`${API_URL}/relatorios`, {
+                    headers: {
+                        'Authorization': `Bearer ${auth.token}`
+                    }
+                });
+
+                const relatorios = await response.json();
+                if (response.ok) {
+                    relatoriosTableBody.innerHTML = '';
+                    relatorios.forEach(processo => {
+                        const row = document.createElement('tr');
+                        row.classList.add('border-b', 'border-gray-200', 'hover:bg-gray-100');
+                        row.innerHTML = `
+                            <td class="py-3 px-6 text-left">${processo.id}</td>
+                            <td class="py-3 px-6 text-left">${processo.tipoFibra}</td>
+                            <td class="py-3 px-6 text-left">${processo.armazem}</td>
+                            <td class="py-3 px-6 text-left">${processo.status}</td>
+                            <td class="py-3 px-6 text-left">${new Date(processo.horaInicio).toLocaleString()}</td>
+                            <td class="py-3 px-6 text-left">${processo.horaFim ? new Date(processo.horaFim).toLocaleString() : '-'}</td>
+                            <td class="py-3 px-6 text-left">${processo.usuario.name}</td>
+                        `;
+                        relatoriosTableBody.appendChild(row);
+                    });
+                    relatoriosMessage.textContent = '';
+                } else {
+                    relatoriosMessage.textContent = relatorios.error || 'Erro ao carregar relatórios.';
+                }
+            } catch (error) {
+                relatoriosMessage.textContent = 'Erro de conexão com o servidor.';
+                console.error('Erro:', error);
+            }
+        }
+
+        // Função para testar a conexão
+        testConnectionBtn.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${API_URL}/status`);
+                const data = await response.json();
+                if (response.ok) {
+                    connectionStatusMessage.textContent = data.message;
+                    connectionStatusMessage.classList.add('text-green-500');
+                    connectionStatusMessage.classList.remove('text-red-500');
+                } else {
+                    connectionStatusMessage.textContent = 'Erro ao conectar. O servidor pode não estar rodando.';
+                    connectionStatusMessage.classList.add('text-red-500');
+                    connectionStatusMessage.classList.remove('text-green-500');
+                }
+            } catch (error) {
+                connectionStatusMessage.textContent = 'Erro de conexão com o servidor.';
+                connectionStatusMessage.classList.add('text-red-500');
+                connectionStatusMessage.classList.remove('text-green-500');
+                console.error('Erro:', error);
+            }
+        });
+
+        // Inicializa a interface
+        document.addEventListener('DOMContentLoaded', showDashboard);
+    </script>
+</body>
+</html>
