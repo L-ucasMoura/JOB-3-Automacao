@@ -27,10 +27,9 @@ export default function TelaConfirm({ irPara, respostas }) {
             
             <ActionBtn 
                 style={{ "--btn-bg": "#10b981" }}
-                caption="INICIAR OPERAÇÃO"
-                destino="TelaLogin"
+                caption="INICIAR PROCESSO"
+                destino="TelaProgress"
                 irPara={irPara}
-                  // salva no estado do App
                 />
         </div>
             

@@ -120,6 +120,7 @@ body{
 }
 .content{
     width: 100%;
+    min-height: 250px;
     height:auto;
     display: flex;
     flex-wrap: wrap;
@@ -172,9 +173,9 @@ body{
 }
 .act-btn{
     font: "Doppio One", sans-serif;
-    font-size: 15px;
+    font-size: 25px;
     font-weight: bold;
-    min-width: 150px;
+    min-width: 270px;
     min-height: 100%;
     border: none;
     border-radius: 9px;
@@ -182,7 +183,7 @@ body{
     color: var(--bg);
     font-size: auto;
     cursor: pointer;
-    padding: 5px 20px;
+    padding: 5px 10px;
 }
 .card{
     display: flex;

@@ -6,6 +6,7 @@ import TelaFibra from "./TelaFibra";
 import Inicio from "./Inicio";
 import TelaQtd from "./TelaQtd";
 import TelaConfirm from "./TelaConfirm";
+import TelaProgress from "./TelaProgress";
 
 function App() {
     const [telaAtual, setTela] = useState("TelaLogin");
@@ -56,6 +57,7 @@ function App() {
                     respostas={respostas}
                 />
             )}
+            {telaAtual === "TelaProgress" && <TelaProgress irPara={setTela} />}
             
         </>
     );
