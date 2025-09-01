@@ -2,12 +2,15 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import cors from 'cors'
+
 
 const app = express()
 const prisma = new PrismaClient()
 app.use(express.json())
-
+app.use(cors()) 
 const JWT_SECRET = 'secreta'
+
 
 const authMiddleware = (req, res, next) => {
   const authHeader = req.headers['authorization']
@@ -17,7 +20,7 @@ const authMiddleware = (req, res, next) => {
     const decoded = jwt.verify(token, JWT_SECRET)
     req.user = decoded
     next()
-  } catch (err) {
+  } catch {
     return res.status(401).json({ message: 'Token inválido' })
   }
 }
@@ -29,31 +32,6 @@ const supervisorMiddleware = (req, res, next) => {
   next()
 }
 
-const createInitialUsers = async () => {
-  const users = await prisma.user.findMany()
-  if (users.length === 0) {
-    const initialUsers = [
-      { name: 'João', email: 'joao@exemplo.com', password: '123456', role: 'SUPERVISOR' },
-      { name: 'Maria', email: 'maria@exemplo.com', password: '123456', role: 'OPERARIO' },
-      { name: 'Carlos', email: 'carlos@exemplo.com', password: '123456', role: 'OPERARIO' },
-      { name: 'Ana', email: 'ana@exemplo.com', password: '123456', role: 'OPERARIO' },
-      { name: 'Pedro', email: 'pedro@exemplo.com', password: '123456', role: 'OPERARIO' }
-    ]
-    for (let user of initialUsers) {
-      const hashedPassword = await bcrypt.hash(user.password, 10)
-      await prisma.user.create({
-        data: {
-          name: user.name,
-          email: user.email,
-          password: hashedPassword,
-          role: user.role
-        }
-      })
-    }
-    console.log('Usuários iniciais criados!')
-  }
-}
-createInitialUsers()
 
 app.post('/login', async (req, res) => {
   const { email, password } = req.body
@@ -65,6 +43,7 @@ app.post('/login', async (req, res) => {
   res.json({ message: 'Login bem-sucedido', token, role: user.role })
 })
 
+
 app.post('/processo/iniciar', authMiddleware, async (req, res) => {
   const { tipoFibra, armazem } = req.body
   try {
@@ -74,7 +53,7 @@ app.post('/processo/iniciar', authMiddleware, async (req, res) => {
         armazem,
         status: 0,
         horaInicio: new Date(),
-        usuarioId: req.user.userId
+        usuarioId: req.user.userId// dasdaadadda
       }
     })
     res.json(processo)
@@ -129,6 +108,7 @@ app.get('/usuarios', async (req, res) => {
     res.status(500).json({ error: 'Falha ao obter os usuários' })
   }
 })
+
 
 app.listen(3000, () => {
   console.log('🚀 Servidor rodando em http://localhost:3000')
