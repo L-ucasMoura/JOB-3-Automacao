@@ -1,0 +1,106 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --bg:#051c2d;
+    --moldura:#012947;
+    --btn:#0a2d47;
+    --btn-hover:#ffffff;
+    --cyan:#25bee0;
+}
+
+/* Tela inteira */
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg); /* cor de fundo leve */
+}
+
+/* Cabeçalho */
+header {
+  background-color: var(--moldura); /* azul escuro */
+  color: white;
+  padding: 1rem 2rem;
+  text-align: center;
+}
+
+/* Conteúdo principal */
+main.tela {
+  flex: 1; /* ocupa o espaço restante */
+  display: flex;
+  flex-direction: column;
+  padding-top: 3rem;
+  gap: 2rem;
+  border-left: 18px solid var(--moldura);
+  border-right: 18px solid var(--moldura);
+  border-bottom: 18px solid var(--moldura);
+  
+}
+
+/* Título */
+.title {
+  max-width: 37%; /* exemplo: mínimo de 300px */
+}
+.title h2 {
+  font-size: 1.8rem;
+  background-color: var(--cyan);
+  color: var(--bg);
+  text-align: center;
+  padding: 1rem 2rem; /* aumenta o fundo: 2rem em cima/baixo, 1rem nas laterais */
+}
+
+/* Área dos botões A/B */
+.content {
+  display: flex;
+  gap: 0rem;
+  flex-wrap: wrap; /* se a tela for estreita, quebra linha */
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+}
+
+/* Botões principais */
+.main-btn {
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 3px solid var(--btn-hover);
+  border-radius: 8px;
+  background-color: var(--btn);
+  color: white;
+  cursor: pointer;
+  width: 300px;
+  height: 300px;
+}
+/* Área dos botões inferiores */
+.actions {
+  display: flex;
+  padding: 0 3rem;
+  justify-content: space-between;
+  flex-wrap: wrap; /* garante que não quebrem layout */
+}
+.action-btn {
+    border: none;          /* remove borda padrão */
+    outline: none;         /* remove borda quando focado */
+    background: none;      /* remove fundo padrão */
+    box-shadow: none; 
+
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    color: var(--bg);
+    font-weight: bold;
+    border-radius: 9px;
+    border-color: #ffffff;
+    background-color: var(--btn-hover);
+    cursor: pointer;
+    min-width: 200px; /* garante que não fiquem muito pequenos */
+    margin: 0.5rem; /* espaço entre botões */
+    }
+
+

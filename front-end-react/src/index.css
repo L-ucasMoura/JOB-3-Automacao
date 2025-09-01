@@ -1,13 +1,337 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+*{box-sizing: border-box;}
+@import url('https://fonts.googleapis.com/css2?family=Droid+Sans:wght@400;700&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+}
+:root {
+    --bg:#051c2d;
+    --border:#012947;
+    --btn:#0a2d47;
+    --btn-hover:#ffffff;
+    --cyan:#25bee0;
+}
+.layout{
+    box-sizing: border-box;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg);
+    border: 18px solid var(--border);
+    border-top: 0;
+}
+.navBar{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    min-height: 70px;
+    width: 100%;
+    background-color: var(--border);
+    overflow-x: auto;
+}
+.nav-left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+.nav-left .logo-text{
+    font: "Fauna One", sans-serif;
+    font-weight: normal;
+    font-size: 22px;
+    color: white;
+}
+.nav-left .logo-text span{
+    color: var(--cyan);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.nav-left .logo-img img{
+    max-height: 60px;
+    height: auto;
+    display: block;
+}
+.nav-center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    padding-left: 10px;
+}
+.date-time{
+    display: flex;
+    max-height: 70px;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+    overflow-x: auto;
+}
+.date-time h3{
+    margin: 0;
+    padding: 0;
+    line-height: 1.2;
+}
+.nav-btn{
+    min-width: 120px;
+    min-height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: var(--btn);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: none;
+    padding: 0px 15px;
+}
+.nav-btn-icon{
+    max-height: 30px;
+    max-width: 30%;
+    margin-right: 10px;
+}
+.nav-btn:hover{
+    background-color: var(--cyan);
+    color: var(--bg);
+    font-weight: bold;
+}
+.title{
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: bold;
+    letter-spacing: -1px;
+    word-spacing: 5px;
+    margin: 40px 0;
+    font-size: 30px;
+    padding: 10px 20px;
+    align-self: baseline;
+    color: var(--bg);
+    background-color: var(--cyan);
+}
+.content{
+    width: 100%;
+    min-height: 250px;
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+.main-btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    height: 250px;
+    border: 3px solid white;
+    border-radius: 9px;
+    background-color: var(--btn);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 10px;
+}
+.main-btn.ativo {
+  background-color: white;
+}
+.main-btn.ativo h3{
+    color: var(--btn);
+}
+.btn-img{
+    margin-top: 5px;
+    max-height: 50%;
+}
+.btn-txt{
+    margin: 0;
+}
+.btn-main-info{
+    margin:0;
+    font-size: 50px;
+}
+.botton{
+    margin-top: auto;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 70px;
+    padding: 10px 25px;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+}
+.act-btn{
+    font: "Doppio One", sans-serif;
+    font-size: 25px;
+    font-weight: bold;
+    min-width: 270px;
+    min-height: 100%;
+    border: none;
+    border-radius: 9px;
+    background-color: var(--btn-bg, white);
+    color: var(--bg);
+    font-size: auto;
+    cursor: pointer;
+    padding: 5px 10px;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    width: 300px;
+    height: 320px;
+    border: 3px solid white;
+    border-radius: 9px;
+    background-color: var(--btn);
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+/*---------------------------------------------------------------*/
+.tela-login{
+  min-height: 100vh;         /* ocupa a altura da tela */
+  display: flex;             /* ativa o Flexbox aqui */
+  flex-direction: row;       /* eixo principal: horizontal (padrão) */
+  align-items: center;       /* alinha os filhos verticalmente (eixo cruzado) */
+  justify-content: center;   /* alinha os filhos horizontalmente (eixo principal) */
+  gap: 32px;           /* espaço entre as duas colunas */
+  padding: 24px;
+  border: 18px solid #051c2d;
+  background-color: #012a48;
+}
+.login-card{
+  flex: 0 0 500px;          /* grow:0 shrink:0 basis:420px → largura fixa 420px */
+  height: 500px;
+  background: #051c2d;
+  border-radius: 12px;
+  padding: 50px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+}
+
+/* O logo ocupa o espaço restante */
+.logo{
+  flex: 1 1 0;              /* pode crescer para preencher o espaço */
+  display: flex;            /* usamos flex também para centralizar conteúdo dentro */
+  font-family: "Fauna One", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.login-card h2{
+    color: white;
+    margin: 0 0 15px 0;
+    font-size: 40px;
+    letter-spacing: .06em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.field{
+  margin-bottom: 30px;
+}
+
+.field label{
+    color: white;
+    display: block;          /* faz o label ficar acima do input */
+    font-size: 20px;
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.field input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: white;
+  color: var(--bg);
+  font-size: 15px;
+}
+.field input:focus{
+  outline: none;
+  box-shadow: 0 0 0 4px var(--cyan);
+}
+.btn{
+  width: 100%;
+  margin-top: 40px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  font-size: 18px;
+  cursor: pointer;
+  background: linear-gradient(180deg, #63fff4, #63fff4);
+  color: #05313f;
+  letter-spacing: .04em;
+  transition: transform .06s ease, filter .12s ease;
+}
+.btn:active { transform: translateY(1px); }
+.btn:hover  { filter: brightness(1.02); }
+
+.logo h1{
+
+  margin: 0;
+  font-size: clamp(40px, 6vw, 84px); /* cresce em telas grandes */
+  font-weight: 500;
+  color: #ffffff;   /* AERO */
+}
+.logo .byte{
+    color: #59e7e5;
+ } /* BYTE em cor diferente */
+
+.logo img{
+  width: 50%;
+  height: auto;
+}
+
+@media (max-width: 980px){
+  .tela-login{
+    flex-direction: column;  /* agora os filhos ficam empilhados verticalmente */
+    align-items: stretch;    /* estica para largura disponível */
+    justify-content: flex-start;
+    gap: 18px;
+  }
+  .logo{ order: -1; }        /* mostra a logo acima do card*/
+  .login-card{ width: 100%; max-width: 520px; margin: 0 auto; }
+}
+input::placeholder{ color: rgba(7,39,53,.45); }
+:focus-visible{ outline: 3px solid rgba(99,255,244,.16); outline-offset:2px; }
+/*---------------------------------------------------------------*/
+
+.confirm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: Droid Sans, sans-serif;
+    font-size: 30px;
+    min-width: 100%;
+    text-align: left;
+    line-height: 0.5;
+}
+.confirm-content span{
+    font-size: 50px;
+    font-weight: bold;
+    letter-spacing: .06em;
+    text-align: right;
+    margin-bottom: 30px;
+    margin-left: 20px;
 }
