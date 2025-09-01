@@ -88,7 +88,7 @@ Lista todos os usuários do sistema com contagem de bobinas criadas.
   {
     "id": 2,
     "username": "operador01",
-    "name": "Yan Lima",
+    "name": " Gabriel Ojaimi",
     "role": "OPERADOR",
     "createdAt": "2025-08-28T22:00:00.000Z",
     "_count": {
